@@ -14,3 +14,11 @@ def es_par(x):
 
 numeros_pares = list(filter(es_par, numeros))  # Filtra los números pares de la lista numeros
 print(numeros_pares)
+
+# ------------REDUCE----------------
+def suma(x,y):
+    return x + y  # Devuelve la suma de dos números
+
+from functools import reduce
+sumatoria = reduce(suma, numeros)  # Aplica la función suma de forma acumulativa a los elementos de la lista numeros
+print(sumatoria)
