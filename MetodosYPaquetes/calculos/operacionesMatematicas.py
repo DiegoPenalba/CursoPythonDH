@@ -8,6 +8,8 @@ def multiplicacion(a,b):
     return a * b
 
 def division(a,b):
-    if b == 0:
-        raise ValueError("No se puede dividir por cero")
-    return a / b
+    try: 
+        resultado = a / b
+    except ZeroDivisionError:
+        return "Error: División por cero no permitida." 
+    return resultado
