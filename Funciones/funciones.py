@@ -143,5 +143,63 @@ def deletreo(palabra):
         return palabra[0] + " " + deletreo(palabra[1:])  # Deletrea la primera letra y llama a la función con el resto de la palabra.
 
 print(deletreo("Python"))  # Llama a la función deletreo con la palabra "Python" y muestra el resultado.
+
+print("------------FUNCIONES DOCUMENTACION------------")    
+
 print(deletreo.__doc__)  # Imprime la documentación de la función deletreo.
 help(fibonacci)  # Muestra la documentación de la función fibonacci.
+
+print("------------FUNCIONES LAMBDA------------")    
+
+def operaciones(operacion):
+    if operacion == "suma":
+        return lambda a, b: a + b  # Retorna una función lambda que suma dos números.
+    elif operacion == "resta":
+        return lambda a, b: a - b  # Retorna una función lambda que resta dos números.
+    elif operacion == "multiplicacion":
+        return lambda a, b: a * b  # Retorna una función lambda que multiplica dos números.
+    else:
+        return lambda a, b: a / b if b != 0 else "Error: División por cero"  # Retorna una función lambda que divide dos números, manejando la división por cero.
+
+suma = operaciones("suma")  # Llama a la función operaciones con "suma" y asigna la función lambda resultante a suma.
+resta = operaciones("resta")  # Llama a la función operaciones con "resta" y asigna la función lambda resultante a resta.
+multiplicacion = operaciones("multiplicacion")  # Llama a la función operaciones con "multiplicacion" y asigna la función lambda resultante a multiplicacion.
+division = operaciones("division")  # Llama a la función operaciones con "division" y asigna la función lambda resultante a division.
+
+print(suma(5, 3))  # Imprime el resultado de la suma de 5 y 3.
+
+diccionarioCualquiera = [
+    {"Nombre": "Diego", "Edad": 30},
+    {"Nombre": "Pepe", "Edad": 25},
+    {"Nombre": "Peppo", "Edad": 20}     
+]
+
+estudiantesOrdenados = sorted(diccionarioCualquiera, key=lambda x: x["Edad"])  # Ordena la lista de diccionarios por la clave "Edad" usando una función lambda.
+print(estudiantesOrdenados)  # Imprime la lista de diccionarios ordenada por edad.
+
+# -----------CLOSURES----------------
+print("------------CLOSURES------------")
+
+def exterior(x):
+    def interior(y):
+        return x + y  # La función interior utiliza la variable x de la función exterior.
+    return interior  # La función exterior retorna la función interior.
+
+closure = exterior(10)  # Llama a la función exterior con el valor 10 y asigna la función interior resultante a closure.
+print(closure(5))  # Llama a la función closure con el valor 5, lo que suma 10 + 5 y muestra el resultado.
+
+# ----------- DECORATORS AND WRAPPERS----------------
+print("------------DECORATORS AND WRAPPERS------------")    
+
+def decorador(funcion):
+    def envoltorio():
+        print("Antes de llamar a la función")  # Imprime un mensaje antes de llamar a la función.
+        funcion()  # Llama a la función original.
+        print("Después de llamar a la función")  # Imprime un mensaje después de llamar a la función.
+    return envoltorio  # Retorna la función envoltorio.
+
+def saludo():
+    print("¡Hola!")  # Imprime un saludo.
+
+saludo_decorado = decorador(saludo)  # Aplica el decorador a la función saludo.
+saludo_decorado()  # Llama a la función decorada, lo que ejecuta el envoltorio y la función original.
