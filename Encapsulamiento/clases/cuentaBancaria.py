@@ -22,6 +22,6 @@ class CuentaBancaria:
 
     def obtenerSaldo(self):
         return f"El saldo actual de la cuenta es: ${self.__saldo}"
-
+    
 
     
